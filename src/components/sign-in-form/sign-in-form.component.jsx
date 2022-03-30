@@ -1,15 +1,17 @@
-import { useState } from "react";
-
-import "./sign-in-form.styles.scss";
+import { useState, useContext } from "react";
 
 import FormInput from "../form-input/form-input.component";
-import { signInWithEmail } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
+import { UserContext } from "../contexts/user.context";
+
+import { signInWithEmail } from "../../utils/firebase/firebase.utils";
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
-  // createAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
+
+import "./sign-in-form.styles.scss";
 
 const defaultFormFields = {
   email: "",
@@ -20,15 +22,25 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const resetFormField = () => {
     setFormFields(defaultFormFields);
   };
 
+  const signInWithGoogle = async () => {
+    const { user } = await signInWithGooglePopup();
+    setCurrentUser(user);
+    console.log(user);
+    const userDocRef = await createUserDocumentFromAuth(user);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const response = await signInWithEmail(email, password);
-      console.log("succesful", response);
+      const { user } = await signInWithEmail(email, password);
+      setCurrentUser(user);
+
       resetFormField();
     } catch (error) {
       switch (error.code) {
@@ -43,14 +55,13 @@ const SignInForm = () => {
       }
     }
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+
     setFormFields({ ...formFields, [name]: value });
   };
-  const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(response.user);
-  };
+
   return (
     <div className="sign-up-container">
       <h2>Already have an account?</h2>
