@@ -4,17 +4,16 @@ import { Fragment, useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/crown (1).svg";
 
 import "./navigation.styles.scss";
-import { UserContext } from "../../components/contexts/user.context";
 import { logOut } from "../../utils/firebase/firebase.utils";
+import { UserContext } from "../../components/contexts/user.context";
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const signUserOut = async () => {
     console.log("signin user out ");
     await logOut();
     console.log("signed out");
-    setCurrentUser(null);
   };
 
   return (
