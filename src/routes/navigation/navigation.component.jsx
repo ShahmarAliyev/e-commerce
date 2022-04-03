@@ -13,7 +13,7 @@ import { CartDrowdownContext } from "../../components/contexts/cart-dropdown.con
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { isHidden, setHidden } = useContext(CartDrowdownContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartDrowdownContext);
 
   const signUserOut = async () => {
     console.log("signin user out ");
@@ -21,7 +21,7 @@ const Navigation = () => {
     console.log("signed out");
   };
   const handleDropdownClick = () => {
-    setHidden(!isHidden);
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
@@ -48,7 +48,7 @@ const Navigation = () => {
             <CartIcon />
           </span>
         </div>
-        {!isHidden && <CartDrowdown />}
+        {!isCartOpen && <CartDrowdown />}
       </div>
       <Outlet />
     </Fragment>

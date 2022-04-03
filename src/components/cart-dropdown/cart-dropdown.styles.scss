@@ -21,6 +21,15 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    .empty-count {
+      margin: auto;
+      align-items: center;
+      justify-content: center;
+      .empty-count1 {
+        // margin-bottom: 10x;
+        margin: auto;
+      }
+    }
   }
   button {
     margin-top: auto;
