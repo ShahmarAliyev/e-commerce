@@ -32,6 +32,7 @@ const SignInForm = () => {
 
     try {
       const { user } = await signInWithEmail(email, password);
+      console.log(user);
 
       resetFormField();
       navigate("/");

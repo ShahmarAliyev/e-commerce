@@ -67,7 +67,7 @@ export const CartDrowdownProvider = ({ children }) => {
       return prev + current.price * current.quantity;
     }, 0);
     setCartTotal(totalCost);
-  });
+  }, [cartItems]);
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };

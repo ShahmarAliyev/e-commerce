@@ -1,7 +1,7 @@
 import "./sign-up-form.styles.scss";
 import { useNavigate } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,

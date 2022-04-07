@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CartDrowdownContext } from "../contexts/cart-dropdown.context";
 
 const CheckoutItem = ({ cartItem }) => {
-  const { id, name, quantity, price, imageUrl } = cartItem;
+  const { name, quantity, price, imageUrl } = cartItem;
 
   const { clearItemFromCart, addItemToCart, removeItemToCart } =
     useContext(CartDrowdownContext);
