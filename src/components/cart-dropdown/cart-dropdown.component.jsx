@@ -7,11 +7,14 @@ import { useContext } from "react";
 import { CartDrowdownContext } from "../contexts/cart-dropdown.context";
 
 const CartDrowdown = () => {
-  const { cartItems } = useContext(CartDrowdownContext);
+  const { cartItems, setIsCartOpen } = useContext(CartDrowdownContext);
 
   const navigate = useNavigate();
 
-  const goToCheckoutHandle = () => navigate("/checkout");
+  const goToCheckoutHandle = () => {
+    navigate("/checkout");
+    setIsCartOpen(true);
+  };
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
