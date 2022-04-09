@@ -1,25 +1,28 @@
 import { Link } from "react-router-dom";
-import "./directory-item.styles.scss";
-
+import {
+  DirectoryItemContainer,
+  Body,
+  BackgroundImage,
+} from "./directory-item.styles";
 const DirectoryItem = ({ category }) => {
   const { imageUrl, title } = category;
   const redirectPath = `shop/${title}`;
   return (
-    <div className="directory-item-container">
-      <div
+    <DirectoryItemContainer className="directory-item-container">
+      <BackgroundImage
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       />
-      <div className="body">
+      <Body className="body">
         <h2>{title}</h2>
         <Link to={redirectPath}>
           {" "}
           <p>Shop Now</p>{" "}
         </Link>
-      </div>
-    </div>
+      </Body>
+    </DirectoryItemContainer>
   );
 };
 
