@@ -5,34 +5,35 @@ import {
   CheckoutContainer,
   CheckoutHeader,
   HeaderBlock,
+  Total,
 } from "./checkout.styles";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useContext(CartDrowdownContext);
 
   return (
-    <CheckoutContainer className="checkout-container">
-      <CheckoutHeader className="checkout-header">
-        <HeaderBlock className="header-block">
+    <CheckoutContainer>
+      <CheckoutHeader>
+        <HeaderBlock>
           <span>Product</span>
         </HeaderBlock>
-        <HeaderBlock className="header-block">
+        <HeaderBlock>
           <span>Description</span>
         </HeaderBlock>
-        <HeaderBlock className="header-block">
+        <HeaderBlock>
           <span>Quantity</span>
         </HeaderBlock>
-        <HeaderBlock className="header-block">
+        <HeaderBlock>
           <span>Price</span>
         </HeaderBlock>
-        <HeaderBlock className="header-block">
+        <HeaderBlock>
           <span>Remove</span>
         </HeaderBlock>
       </CheckoutHeader>
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">TOTAL: ${cartTotal}</div>
+      <Total className="total">TOTAL: ${cartTotal}</Total>
     </CheckoutContainer>
   );
 };

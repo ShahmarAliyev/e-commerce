@@ -3,15 +3,15 @@ import { FormInputLabel, Group, Input } from "./form-input.styles";
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <Group className="group">
-      <FormInputLabel className="form-input" {...otherProps} />
+      <Input className="form-input" {...otherProps} />
       {label && (
-        <label
+        <FormInputLabel
           className={`${
             otherProps.value.length ? "shrink" : ""
           } form-input-label`}
         >
           {label}
-        </label>
+        </FormInputLabel>
       )}
     </Group>
   );
