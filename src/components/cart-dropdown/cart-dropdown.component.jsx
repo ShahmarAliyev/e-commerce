@@ -1,10 +1,14 @@
-import "./cart-dropdown.styles.scss";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import { useContext } from "react";
 import { CartDrowdownContext } from "../contexts/cart-dropdown.context";
+import {
+  CartDropdownContainer,
+  CartItems,
+  EmptyMessage,
+} from "./cart-dropdown.styles";
 
 const CartDrowdown = () => {
   const { cartItems, setIsCartOpen } = useContext(CartDrowdownContext);
@@ -16,26 +20,26 @@ const CartDrowdown = () => {
     setIsCartOpen(true);
   };
   return (
-    <div className="cart-dropdown-container">
-      <div className="cart-items">
+    <CartDropdownContainer className="cart-dropdown-container">
+      <CartItems className="cart-items">
         {cartItems.length === 0 ? (
-          <div className="empty-count">
+          <EmptyMessage className="empty-count">
             {/* <span className="empty-count1">Your Cart is Empty</span> */}
             <p className="empty-count2">Add Items to your cart</p>
-          </div>
+          </EmptyMessage>
         ) : (
           cartItems.map((item) => {
             return <CartItem key={item.id} cartItem={item} />;
           })
         )}
-      </div>
+      </CartItems>
 
       {cartItems.length === 0 ? (
         <Button disabled>Empty Cart</Button>
       ) : (
         <Button onClick={goToCheckoutHandle}>Checkout</Button>
       )}
-    </div>
+    </CartDropdownContainer>
   );
 };
 
