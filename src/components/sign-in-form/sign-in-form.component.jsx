@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { signInWithEmail } from "../../utils/firebase/firebase.utils";
 
@@ -78,7 +78,11 @@ const SignInForm = () => {
         />
         <ButtonsContainer className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" onClick={signInWithGoogle} buttonType="google">
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            buttonType={BUTTON_TYPE_CLASSES.google}
+          >
             Google Signin
           </Button>
         </ButtonsContainer>
