@@ -5,16 +5,13 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { CartDrowdownProvider } from "./components/contexts/cart-dropdown.context";
 import { store } from "./store/store";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <CartDrowdownProvider>
-          <App />
-        </CartDrowdownProvider>
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
