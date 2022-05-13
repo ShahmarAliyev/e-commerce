@@ -20,6 +20,7 @@ import { signOutStart } from "../../store/user/user.action";
 const Navigation = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  console.log(currentUser);
 
   const isCartOpen = useSelector(selectIsCartOpen);
 
