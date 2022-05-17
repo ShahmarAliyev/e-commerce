@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
@@ -9,6 +9,7 @@ import {
   emailSignInStart,
   googleSignInStart,
 } from "../../store/user/user.action";
+import { log } from "console";
 
 const defaultFormFields = {
   email: "",
@@ -29,7 +30,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
     // navigate("/");
   };
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -38,20 +39,11 @@ const SignInForm = () => {
       resetFormField();
       navigate("/");
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("Incorrect Password forx email");
-          break;
-        case "auth/user-not-found":
-          alert("No user found associated with this email");
-          break;
-        default:
-          console.log(error);
-      }
+      console.log(error);
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });

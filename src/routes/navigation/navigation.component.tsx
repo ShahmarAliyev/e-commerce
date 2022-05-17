@@ -20,14 +20,12 @@ import { signOutStart } from "../../store/user/user.action";
 const Navigation = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  console.log(currentUser);
 
   const isCartOpen = useSelector(selectIsCartOpen);
 
   const signUserOut = async () => {
     console.log("signin user out ");
     dispatch(signOutStart());
-    console.log("signed out");
   };
 
   return (
