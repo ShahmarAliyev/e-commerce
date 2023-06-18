@@ -1,0 +1,10 @@
+.products-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  row-gap: 50px;
+}
+/*# sourceMappingURL=shop.styles.css.map */
