@@ -21,3 +21,4 @@ Simulated Payments: Users can experience the payment process using a mock Stripe
 
 <img src="./src/assets/gif.gif" width="500" height="500" />
 
+
