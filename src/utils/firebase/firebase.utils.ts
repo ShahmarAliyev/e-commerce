@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithPopup,
@@ -9,7 +9,7 @@ import {
   onAuthStateChanged,
   User,
   NextOrObserver,
-} from "firebase/auth";
+} from 'firebase/auth';
 
 import {
   getFirestore,
@@ -21,16 +21,16 @@ import {
   query,
   getDocs,
   QueryDocumentSnapshot,
-} from "firebase/firestore";
-import { Category } from "../../store/categories/category.types";
+} from 'firebase/firestore';
+import { Category } from '../../store/categories/category.types';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCYCfg8L-5iYwKeD9FE05AShs0vjj_MZNA",
-  authDomain: "e-commerce-8a015.firebaseapp.com",
-  projectId: "e-commerce-8a015",
-  storageBucket: "e-commerce-8a015.appspot.com",
-  messagingSenderId: "871002039011",
-  appId: "1:871002039011:web:2ec835aeb0a5cd49efdbd6",
+  apiKey: 'AIzaSyCYCfg8L-5iYwKeD9FE05AShs0vjj_MZNA',
+  authDomain: 'e-commerce-8a015.firebaseapp.com',
+  projectId: 'e-commerce-8a015',
+  storageBucket: 'e-commerce-8a015.appspot.com',
+  messagingSenderId: '871002039011',
+  appId: '1:871002039011:web:2ec835aeb0a5cd49efdbd6',
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);
@@ -53,11 +53,11 @@ export const addCollectionsAndDocuments = async <T extends ObjectToAdd>(
     batch.set(docRef, object);
   });
   await batch.commit();
-  console.log("done");
+  console.log('done');
 };
 
 export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
-  const collectionRef = collection(db, "categories");
+  const collectionRef = collection(db, 'categories');
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
@@ -68,11 +68,11 @@ export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-  prompt: "select_account",
+  prompt: 'select_account',
 });
 
 export const signInWithGooglePopup = () => {
-  console.log("signing in");
+  console.log('signing in');
   return signInWithPopup(auth, googleProvider);
 };
 
@@ -91,7 +91,7 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ): Promise<void | QueryDocumentSnapshot<UserData>> => {
   if (!userAuth) return;
-  const userDocRef = doc(db, "users", userAuth.uid);
+  const userDocRef = doc(db, 'users', userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 
@@ -106,7 +106,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("error creating the user", error);
+      console.log('error creating the user', error);
     }
   }
   return userSnapshot as QueryDocumentSnapshot<UserData>;

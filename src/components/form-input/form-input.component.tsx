@@ -1,17 +1,17 @@
-import { FC, InputHTMLAttributes } from "react";
-import { FormInputLabel, Group, Input } from "./form-input.styles";
+import { FC, InputHTMLAttributes } from 'react';
+import { FormInputLabel, Group, Input } from './form-input.styles';
 
 type FormInputProps = { label: string } & InputHTMLAttributes<HTMLInputElement>;
 
 const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
   return (
-    <Group className="group">
+    <Group className='group'>
       <Input {...otherProps} />
       {label && (
         <FormInputLabel
           shrink={Boolean(
             otherProps.value &&
-              typeof otherProps.value === "string" &&
+              typeof otherProps.value === 'string' &&
               otherProps.value.length
           )}
         >

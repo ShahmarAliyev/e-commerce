@@ -1,15 +1,15 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC } from 'react';
 import {
   BaseButton,
   ButtonSpinner,
   GoogleSignInButton,
   InvertedButton,
-} from "./button.styles";
+} from './button.styles';
 
 export enum BUTTON_TYPE_CLASSES {
-  base = "base",
-  google = "google-sign-in",
-  inverted = "inverted",
+  base = 'base',
+  google = 'google-sign-in',
+  inverted = 'inverted',
 }
 
 const getButton = (buttonType = BUTTON_TYPE_CLASSES.base): typeof BaseButton =>
