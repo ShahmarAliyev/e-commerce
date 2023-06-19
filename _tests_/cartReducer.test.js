@@ -1,6 +1,5 @@
 import {
   setCarItems,
-  removeItemFromCart,
   removeItemToCart,
   clearItemFromCart,
 } from '../src/store/cart/cart.actions.ts';
@@ -100,7 +99,6 @@ describe('Cart Reducer', () => {
           cartItemToRemove
         );
         const newState = cartReducer(initialState, action);
-        console.log(newState);
         expect(newState.cartItems.length).toBe(1);
         expect(newState.cartItems).toEqual([
           { id: 2, name: 'Item 2', quantity: 1 },
